@@ -26,14 +26,14 @@ const useStyles = createStyles((theme, _params, getRef) => {
 
   return {
     header: {
-      paddingBottom: theme.spacing.sm,
-      marginBottom: theme.spacing.lg,
+      paddingBottom: theme.spacing.xs,
+      marginBottom: theme.spacing.md,
       borderBottom: `1px solid ${theme.colors.gray[2]}`,
     },
 
     footer: {
-      paddingTop: theme.spacing.sm,
-      marginTop: theme.spacing.lg,
+      paddingTop: theme.spacing.xs,
+      marginTop: theme.spacing.md,
       borderTop: `1px solid ${theme.colors.gray[2]}`,
     },
 
@@ -153,9 +153,6 @@ export const SideNav: FC = () => {
             </>
           )}
         </UnstyledButton>
-        <CustomTooltip label="ログアウト" disabled={!isCollapsed}>
-          <SignOutButton>{isCollapsed ? null : "ログアウト"}</SignOutButton>
-        </CustomTooltip>
       </Navbar.Section>
     </Navbar>
   );
@@ -175,25 +172,8 @@ const CustomTooltip: FC<TooltipProps> = ({
       withArrow
       sx={{ width: "100%" }}
       {...rest}
-      transitionDuration={200}
-      exitTransitionDuration={200}
     >
       {children}
     </Tooltip>
-  );
-};
-
-const SignOutButton: FC<{ children?: ReactNode }> = ({ children }) => {
-  const router = useRouter();
-  const { classes } = useStyles();
-  const signOut = () => {
-    router.push(getPath("SIGN_IN"));
-  };
-
-  return (
-    <UnstyledButton className={classes.link} onClick={signOut}>
-      <Logout className={classes.linkIcon} />
-      {children ? <span>{children}</span> : null}
-    </UnstyledButton>
   );
 };

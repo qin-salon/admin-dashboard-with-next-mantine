@@ -1,7 +1,8 @@
 import type { CustomLayout } from "next";
-import { AppShell } from "@mantine/core";
+import { AppShell, Box } from "@mantine/core";
 
 import { SideNav } from "./SideNav";
+import { Header } from "./Header";
 import { LayoutErrorBoundary } from "../LayoutErrorBoundary";
 
 export const DashboardLayout: CustomLayout = (page) => {
@@ -11,10 +12,13 @@ export const DashboardLayout: CustomLayout = (page) => {
       navbar={<SideNav />}
       styles={(theme) => ({
         body: { minHeight: "100vh" },
-        main: { backgroundColor: theme.colors.gray[0] },
+        main: { padding: 0, backgroundColor: theme.colors.gray[0] },
       })}
     >
-      <LayoutErrorBoundary>{page}</LayoutErrorBoundary>
+      <Header />
+      <Box p="md">
+        <LayoutErrorBoundary>{page}</LayoutErrorBoundary>
+      </Box>
     </AppShell>
   );
 };
