@@ -1,19 +1,10 @@
-import type { NextPage } from "next";
-import { Button } from "src/lib/mantine";
+import type { CustomNextPage } from "next";
+import { DashboardLayout } from "src/layout";
 
-const Home: NextPage = () => {
-  const handleClick = () => {
-    console.log("Hello!");
-  };
-
-  return (
-    <div>
-      <Button dent onClick={handleClick}>
-        Click me!
-      </Button>
-      <Button onClick={handleClick}>Click me!</Button>
-    </div>
-  );
+const Index: CustomNextPage = () => {
+  return <div>Index</div>;
 };
 
-export default Home;
+Index.getLayout = DashboardLayout;
+
+export default Index;
