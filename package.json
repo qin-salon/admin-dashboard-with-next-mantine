@@ -10,10 +10,11 @@
     "@mantine/core": "4.2.9",
     "@mantine/hooks": "4.2.9",
     "@mantine/next": "4.2.9",
-    "next": "12.1.6",
+    "next": "^12.1.7-canary.37",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-error-boundary": "3.1.4"
+    "react-error-boundary": "3.1.4",
+    "tabler-icons-react": "^1.48.1"
   },
   "devDependencies": {
     "@types/node": "17.0.42",

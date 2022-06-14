@@ -1,24 +1,21 @@
 import type { CustomNextPage } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { AuthLayout } from "src/layout";
 import { getPath } from "src/lib/const";
 import { Button } from "src/lib/mantine";
 import {
   TextInput,
   PasswordInput,
-  Checkbox,
   Anchor,
   Paper,
   Title,
   Text,
-  Group,
+  Space,
 } from "@mantine/core";
 
-const SignIn: CustomNextPage = () => {
-  const router = useRouter();
-  const signIn = () => {
-    router.push(getPath("INDEX"));
+const SignUp: CustomNextPage = () => {
+  const signUp = () => {
+    alert("メールを送信しました");
   };
 
   return (
@@ -30,12 +27,12 @@ const SignIn: CustomNextPage = () => {
           fontWeight: 900,
         })}
       >
-        ログイン
+        新規登録
       </Title>
       <Text color="dimmed" size="sm" align="center" mt={5}>
-        アカウントをお持ちでないですか？{" "}
-        <Link href={getPath("SIGN_UP")} passHref>
-          <Anchor<"a"> size="sm">新規登録</Anchor>
+        アカウントを既にお持ちですか？{" "}
+        <Link href={getPath("SIGN_IN")} passHref>
+          <Anchor<"a"> size="sm">ログイン</Anchor>
         </Link>
       </Text>
 
@@ -51,20 +48,15 @@ const SignIn: CustomNextPage = () => {
           required
           mt="md"
         />
-        <Group position="apart" mt="md">
-          <Checkbox label="ログイン状態を保持" />
-          <Link href={getPath("FORGOT_PASSWORD")} passHref>
-            <Anchor<"a"> size="sm">パスワードをお忘れですか？</Anchor>
-          </Link>
-        </Group>
-        <Button fullWidth mt="xl" onClick={signIn}>
-          ログイン
+        <Space h="md" />
+        <Button fullWidth mt="xl" onClick={signUp}>
+          新規登録
         </Button>
       </Paper>
     </>
   );
 };
 
-SignIn.getLayout = AuthLayout;
+SignUp.getLayout = AuthLayout;
 
-export default SignIn;
+export default SignUp;
