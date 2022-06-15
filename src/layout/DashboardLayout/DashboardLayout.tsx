@@ -1,24 +1,90 @@
+import { FC, useEffect } from "react";
 import type { CustomLayout } from "next";
-import { AppShell, Box } from "@mantine/core";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { useDisclosure } from "@mantine/hooks";
+import { AppShell, Box, Drawer, MediaQuery } from "@mantine/core";
+import { Menu2 } from "tabler-icons-react";
+import { ActionIcon } from "src/lib/mantine";
 
-import { SideNav } from "./SideNav";
-import { Header } from "./Header";
 import { LayoutErrorBoundary } from "../LayoutErrorBoundary";
 
+const Header = dynamic(async () => {
+  const { Header } = await import("./Header");
+  return Header;
+});
+
+const SideNav = dynamic(async () => {
+  const { SideNav } = await import("./SideNav");
+  return SideNav;
+});
+
 export const DashboardLayout: CustomLayout = (page) => {
+  const [opened, handlers] = useDisclosure(false);
+
   return (
     <AppShell
       padding="md"
-      navbar={<SideNav />}
       styles={(theme) => ({
         body: { minHeight: "100vh" },
         main: { padding: 0, backgroundColor: theme.colors.gray[0] },
       })}
+      navbar={
+        <>
+          <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
+            <SideNav />
+          </MediaQuery>
+          <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+            <DrawerNav opened={opened} handleClose={handlers.close} />
+          </MediaQuery>
+        </>
+      }
     >
-      <Header />
+      <Header
+        left={
+          <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+            <ActionIcon
+              component="a"
+              variant="hover"
+              radius="xl"
+              size={40}
+              onClick={handlers.open}
+            >
+              <Menu2 />
+            </ActionIcon>
+          </MediaQuery>
+        }
+      />
       <Box p="md">
         <LayoutErrorBoundary>{page}</LayoutErrorBoundary>
       </Box>
     </AppShell>
+  );
+};
+
+const DrawerNav: FC<{ opened: boolean; handleClose: () => void }> = ({
+  opened,
+  handleClose,
+}) => {
+  const router = useRouter();
+
+  // SideNav のメニュークリックで Drawer を閉じる処理
+  useEffect(() => {
+    router.events.on("routeChangeStart", handleClose);
+    return () => {
+      router.events.off("routeChangeStart", handleClose);
+    };
+  }, [handleClose, router.events]);
+
+  return (
+    <Drawer
+      opened={opened}
+      onClose={handleClose}
+      size="auto"
+      withCloseButton={false}
+      trapFocus={false}
+    >
+      <SideNav />
+    </Drawer>
   );
 };

@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   Avatar,
   Box,
@@ -5,16 +7,14 @@ import {
   Group,
   Indicator,
   Menu,
-  TextInput,
+  Autocomplete,
 } from "@mantine/core";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { FC } from "react";
+import { Logout, Bell, Search, Settings, Menu2 } from "tabler-icons-react";
+import { FC, ReactNode } from "react";
 import { getPath } from "src/lib/const";
 import { ActionIcon } from "src/lib/mantine";
-import { Logout, Bell, Search, Settings } from "tabler-icons-react";
 
-export const Header: FC = () => {
+export const Header: FC<{ left: ReactNode }> = ({ left }) => {
   return (
     <Box
       component="header"
@@ -24,7 +24,8 @@ export const Header: FC = () => {
         backgroundColor: theme.white,
       })}
     >
-      <Group>
+      <Group spacing="lg" noWrap>
+        {left}
         <SearchForm />
         <Notification />
         <UserMenu />
@@ -35,22 +36,27 @@ export const Header: FC = () => {
 
 const SearchForm: FC = () => {
   return (
-    <form style={{ flexGrow: 1 }}>
-      <TextInput
-        size="lg"
-        placeholder="Search"
-        styles={{ input: { border: 0, backgroundColor: "transparent" } }}
-        icon={<Search size={18} />}
-      />
-    </form>
+    <Autocomplete
+      data={[]}
+      size="lg"
+      placeholder="Search"
+      icon={<Search size={18} />}
+      styles={{
+        root: { flexGrow: 1 },
+        input: { border: 0, backgroundColor: "transparent" },
+      }}
+      onChange={(value) => {
+        console.log(value);
+      }}
+    />
   );
 };
 
 const Notification: FC = () => {
   return (
-    <Indicator inline size={16} offset={6} color="red" withBorder>
+    <Indicator inline size={14} offset={4} color="red" withBorder>
       <Link href={getPath("NOTIFICATION")} passHref>
-        <ActionIcon component="a" variant="hover" radius="xl" size="xl">
+        <ActionIcon component="a" variant="hover" radius="xl" size={40}>
           <Bell />
         </ActionIcon>
       </Link>
@@ -71,11 +77,12 @@ const UserMenu: FC = () => {
       placement="end"
       transition="pop-top-right"
       control={
-        <Avatar
-          src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
-          radius="xl"
-          sx={{ cursor: "pointer" }}
-        />
+        <ActionIcon variant="hover" radius="xl" size={40}>
+          <Avatar
+            src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
+            radius="xl"
+          />
+        </ActionIcon>
       }
       styles={(theme) => ({
         label: { fontSize: theme.fontSizes.sm },
