@@ -94,7 +94,6 @@ const UserMenu: FC = () => {
       <Menu.Item icon={<Settings size={16} />}>メニュー2</Menu.Item>
       <Menu.Item icon={<Settings size={16} />}>メニュー3</Menu.Item>
       <Divider />
-      <Menu.Label>Danger zone</Menu.Label>
       <Menu.Item icon={<Logout size={16} />} onClick={signOut}>
         ログアウト
       </Menu.Item>

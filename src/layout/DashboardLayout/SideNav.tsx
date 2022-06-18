@@ -116,7 +116,7 @@ export const SideNav: FC<{ className?: string }> = ({ className }) => {
           <Link href={getPath("INDEX")}>
             <a className={classes.logo}>
               <DeviceAnalytics />
-              <span className={classes.linkLabel}>HR AD Reporter</span>
+              <span className={classes.linkLabel}>Admin Dashboard</span>
             </a>
           </Link>
         </Group>
