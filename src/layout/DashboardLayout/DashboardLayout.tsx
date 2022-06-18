@@ -55,7 +55,7 @@ export const DashboardLayout: CustomLayout = (page) => {
           </MediaQuery>
         }
       />
-      <Box p="md">
+      <Box py="xl" px="md">
         <LayoutErrorBoundary>{page}</LayoutErrorBoundary>
       </Box>
     </AppShell>

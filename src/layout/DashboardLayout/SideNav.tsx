@@ -27,7 +27,7 @@ const useStyles = createStyles<string, { collapsed?: boolean }>(
       navbar: {
         position: "sticky",
         top: 0,
-        width: params?.collapsed ? 81 : 300,
+        width: params?.collapsed ? 81 : 264,
         transition: params?.collapsed ? "width 0.1s linear" : "none",
       },
 
