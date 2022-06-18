@@ -3,7 +3,7 @@ import type { CustomLayout } from "next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useDisclosure } from "@mantine/hooks";
-import { AppShell, Box, Drawer, MediaQuery } from "@mantine/core";
+import { AppShell, Box, CloseButton, Drawer, MediaQuery } from "@mantine/core";
 import { Menu2 } from "tabler-icons-react";
 import { ActionIcon } from "src/lib/mantine";
 
@@ -44,7 +44,6 @@ export const DashboardLayout: CustomLayout = (page) => {
         left={
           <MediaQuery largerThan="sm" styles={{ display: "none" }}>
             <ActionIcon
-              component="a"
               variant="hover"
               radius="xl"
               size={40}
@@ -82,8 +81,22 @@ const DrawerNav: FC<{ opened: boolean; handleClose: () => void }> = ({
       onClose={handleClose}
       size="auto"
       withCloseButton={false}
-      trapFocus={false}
+      sx={{ position: "relative" }}
     >
+      <CloseButton
+        size="xl"
+        radius="xl"
+        variant="transparent"
+        onClick={handleClose}
+        sx={{
+          position: "absolute",
+          zIndex: 999,
+          top: 8,
+          right: -56,
+          color: "white",
+          "&:not(:disabled):active": { transform: "none" },
+        }}
+      />
       <SideNav />
     </Drawer>
   );
