@@ -1,5 +1,7 @@
+import { FC, ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { NextLink } from "@mantine/next";
 import {
   Avatar,
   Box,
@@ -9,8 +11,7 @@ import {
   Menu,
   Autocomplete,
 } from "@mantine/core";
-import { Logout, Bell, Search, Settings, Menu2 } from "tabler-icons-react";
-import { FC, ReactNode } from "react";
+import { Logout, Bell, Search, Settings } from "tabler-icons-react";
 import { getPath } from "src/lib/const";
 import { ActionIcon } from "src/lib/mantine";
 
@@ -90,9 +91,15 @@ const UserMenu: FC = () => {
       })}
     >
       <Menu.Label>Application</Menu.Label>
-      <Menu.Item icon={<Settings size={16} />}>メニュー1</Menu.Item>
-      <Menu.Item icon={<Settings size={16} />}>メニュー2</Menu.Item>
-      <Menu.Item icon={<Settings size={16} />}>メニュー3</Menu.Item>
+      <Menu.Item icon={<Settings size={16} />} component={NextLink} href="#">
+        メニュー1
+      </Menu.Item>
+      <Menu.Item icon={<Settings size={16} />} component={NextLink} href="#">
+        メニュー2
+      </Menu.Item>
+      <Menu.Item icon={<Settings size={16} />} component={NextLink} href="#">
+        メニュー3
+      </Menu.Item>
       <Divider />
       <Menu.Item icon={<Logout size={16} />} onClick={signOut}>
         ログアウト
