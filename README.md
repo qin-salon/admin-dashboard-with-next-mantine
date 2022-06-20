@@ -11,5 +11,5 @@
 ## Getting Started
 
 ```bash
-yarn create next-app --example https://github.com/lightsound/admin-dashboard-with-next-mantine
+yarn create next-app --example https://github.com/qin-salon/admin-dashboard-with-next-mantine
 ```
