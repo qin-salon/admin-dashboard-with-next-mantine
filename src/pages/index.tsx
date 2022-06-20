@@ -1,8 +1,9 @@
-import { Stack, Table } from "@mantine/core";
+import { Button, Stack, Table } from "@mantine/core";
 import type { CustomNextPage } from "next";
 import { DashboardLayout } from "src/layout";
 import { PageContent } from "src/component/PageContent";
 import { PageContainer } from "src/component/PageContainer";
+import { showNotification } from "@mantine/notifications";
 
 const Index: CustomNextPage = () => {
   return (
@@ -10,6 +11,11 @@ const Index: CustomNextPage = () => {
       <Stack spacing="xl">
         <PageContent title="テーブル">
           <SampleTable />
+        </PageContent>
+        <PageContent title="通知">
+          <Button onClick={() => showNotification({ message: "成功しました" })}>
+            通知を表示
+          </Button>
         </PageContent>
       </Stack>
     </PageContainer>
