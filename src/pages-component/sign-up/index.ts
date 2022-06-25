@@ -1,0 +1,1 @@
+export { SignUp } from "./page";

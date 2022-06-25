@@ -1,10 +1,11 @@
 import type { CustomNextPage } from "next";
 import { DashboardLayout } from "src/layout";
+import { Notification } from "src/pages-component/notification";
 
-const Notification: CustomNextPage = () => {
-  return <div>Notification</div>;
+const NotificationPage: CustomNextPage = (props) => {
+  return <Notification {...props} />;
 };
 
-Notification.getLayout = DashboardLayout;
+NotificationPage.getLayout = DashboardLayout;
 
-export default Notification;
+export default NotificationPage;
