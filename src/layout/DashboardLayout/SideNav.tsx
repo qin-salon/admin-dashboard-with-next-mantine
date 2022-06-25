@@ -1,23 +1,23 @@
-import { FC } from "react";
-import Link from "next/link";
-import { useDisclosure } from "@mantine/hooks";
 import {
   createStyles,
-  Navbar,
   Group,
-  UnstyledButton,
-  Tooltip,
   MediaQuery,
+  Navbar,
+  Tooltip,
+  UnstyledButton,
 } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import Link from "next/link";
+import type { FC } from "react";
+import { getPath } from "src/lib/const";
+import { ActiveLink } from "src/lib/next";
 import {
-  Home,
-  Settings,
   ArrowLeft,
   ArrowRight,
   DeviceAnalytics,
+  Home,
+  Settings,
 } from "tabler-icons-react";
-import { getPath } from "src/lib/const";
-import { ActiveLink } from "src/lib/next";
 
 const useStyles = createStyles<string, { collapsed?: boolean }>(
   (theme, params, getRef) => {
@@ -105,6 +105,7 @@ const ITEMS = [
   { href: getPath("SETTINGS"), label: "設定", Icon: Settings },
 ];
 
+/** @package */
 export const SideNav: FC<{ className?: string }> = ({ className }) => {
   const [collapsed, handlers] = useDisclosure(false);
   const { classes, cx } = useStyles({ collapsed });
@@ -120,31 +121,33 @@ export const SideNav: FC<{ className?: string }> = ({ className }) => {
             </a>
           </Link>
         </Group>
-        {ITEMS.map(({ label, href, Icon }) => (
-          <Tooltip
-            key={label}
-            label={label}
-            disabled={!collapsed}
-            position="right"
-            withArrow
-            sx={{ width: "100%" }}
-          >
-            <ActiveLink href={href} passHref>
-              {(isActive) => {
-                return (
-                  <a
-                    className={cx(classes.link, {
-                      [classes.linkActive]: isActive,
-                    })}
-                  >
-                    <Icon className={classes.linkIcon} />
-                    <span className={classes.linkLabel}>{label}</span>
-                  </a>
-                );
-              }}
-            </ActiveLink>
-          </Tooltip>
-        ))}
+        {ITEMS.map(({ Icon, href, label }) => {
+          return (
+            <Tooltip
+              key={label}
+              label={label}
+              disabled={!collapsed}
+              position="right"
+              withArrow
+              sx={{ width: "100%" }}
+            >
+              <ActiveLink href={href} passHref>
+                {(isActive) => {
+                  return (
+                    <a
+                      className={cx(classes.link, {
+                        [classes.linkActive]: isActive,
+                      })}
+                    >
+                      <Icon className={classes.linkIcon} />
+                      <span className={classes.linkLabel}>{label}</span>
+                    </a>
+                  );
+                }}
+              </ActiveLink>
+            </Tooltip>
+          );
+        })}
       </Navbar.Section>
 
       <MediaQuery smallerThan="sm" styles={{ display: "none" }}>

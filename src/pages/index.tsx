@@ -1,9 +1,9 @@
 import { Button, Stack, Table } from "@mantine/core";
-import type { CustomNextPage } from "next";
-import { DashboardLayout } from "src/layout";
-import { PageContent } from "src/component/PageContent";
-import { PageContainer } from "src/component/PageContainer";
 import { showNotification } from "@mantine/notifications";
+import type { CustomNextPage } from "next";
+import { PageContainer } from "src/component/PageContainer";
+import { PageContent } from "src/component/PageContent";
+import { DashboardLayout } from "src/layout";
 
 const Index: CustomNextPage = () => {
   return (
@@ -13,7 +13,11 @@ const Index: CustomNextPage = () => {
           <SampleTable />
         </PageContent>
         <PageContent title="通知">
-          <Button onClick={() => showNotification({ message: "成功しました" })}>
+          <Button
+            onClick={() => {
+              return showNotification({ message: "成功しました" });
+            }}
+          >
             通知を表示
           </Button>
         </PageContent>
@@ -40,14 +44,16 @@ const SampleTable = () => {
           { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
           { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
           { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-        ].map((element) => (
-          <tr key={element.name}>
-            <td>{element.position}</td>
-            <td>{element.name}</td>
-            <td>{element.symbol}</td>
-            <td>{element.mass}</td>
-          </tr>
-        ))}
+        ].map((element) => {
+          return (
+            <tr key={element.name}>
+              <td>{element.position}</td>
+              <td>{element.name}</td>
+              <td>{element.symbol}</td>
+              <td>{element.mass}</td>
+            </tr>
+          );
+        })}
       </tbody>
     </Table>
   );

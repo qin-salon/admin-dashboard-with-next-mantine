@@ -1,8 +1,3 @@
-import { FC, useEffect } from "react";
-import type { CustomLayout } from "next";
-import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
-import { useDisclosure } from "@mantine/hooks";
 import {
   ActionIcon,
   AppShell,
@@ -11,6 +6,12 @@ import {
   Drawer,
   MediaQuery,
 } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import type { CustomLayout } from "next";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import type { FC } from "react";
+import { useEffect } from "react";
 import { Menu2 } from "tabler-icons-react";
 
 import { LayoutErrorBoundary } from "../LayoutErrorBoundary";
@@ -25,16 +26,19 @@ const SideNav = dynamic(async () => {
   return SideNav;
 });
 
+/** @package */
 export const DashboardLayout: CustomLayout = (page) => {
   const [opened, handlers] = useDisclosure(false);
 
   return (
     <AppShell
       padding="md"
-      styles={(theme) => ({
-        body: { minHeight: "100vh" },
-        main: { padding: 0, backgroundColor: theme.colors.gray[0] },
-      })}
+      styles={(theme) => {
+        return {
+          body: { minHeight: "100vh" },
+          main: { padding: 0, backgroundColor: theme.colors.gray[0] },
+        };
+      }}
       navbar={
         <>
           <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
@@ -68,8 +72,8 @@ export const DashboardLayout: CustomLayout = (page) => {
 };
 
 const DrawerNav: FC<{ opened: boolean; handleClose: () => void }> = ({
-  opened,
   handleClose,
+  opened,
 }) => {
   const router = useRouter();
 

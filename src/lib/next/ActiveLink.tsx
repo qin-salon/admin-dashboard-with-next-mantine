@@ -7,6 +7,7 @@ type Props = Omit<LinkProps, "children"> & {
   children: (isActive: boolean) => ReactElement;
 };
 
+/** @package */
 export const ActiveLink: FC<Props> = ({ children, ...linkProps }) => {
   const { pathname } = useRouter();
   return <Link {...linkProps}>{children(pathname === linkProps.href)}</Link>;

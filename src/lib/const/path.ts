@@ -7,6 +7,7 @@ const PATH = {
   FORGOT_PASSWORD: "/forgot-password",
 } as const;
 
+/** @package */
 export const getPath = (pathKey: keyof typeof PATH, ...args: string[]) => {
   const val = PATH[pathKey];
 

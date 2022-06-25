@@ -1,17 +1,17 @@
+import {
+  Anchor,
+  Button,
+  Paper,
+  PasswordInput,
+  Space,
+  Text,
+  TextInput,
+  Title,
+} from "@mantine/core";
 import type { CustomNextPage } from "next";
 import Link from "next/link";
 import { AuthLayout } from "src/layout";
 import { getPath } from "src/lib/const";
-import {
-  TextInput,
-  PasswordInput,
-  Anchor,
-  Paper,
-  Title,
-  Text,
-  Space,
-  Button,
-} from "@mantine/core";
 
 const SignUp: CustomNextPage = () => {
   const signUp = () => {
@@ -22,10 +22,12 @@ const SignUp: CustomNextPage = () => {
     <>
       <Title
         align="center"
-        sx={(theme) => ({
-          fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-          fontWeight: 900,
-        })}
+        sx={(theme) => {
+          return {
+            fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+            fontWeight: 900,
+          };
+        }}
       >
         新規登録
       </Title>

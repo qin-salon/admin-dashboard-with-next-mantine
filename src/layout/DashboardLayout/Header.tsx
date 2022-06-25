@@ -1,29 +1,32 @@
-import { FC, ReactNode } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { NextLink } from "@mantine/next";
 import {
+  ActionIcon,
+  Autocomplete,
   Avatar,
   Box,
   Divider,
   Group,
   Indicator,
   Menu,
-  Autocomplete,
-  ActionIcon,
 } from "@mantine/core";
-import { Logout, Bell, Search, Settings } from "tabler-icons-react";
+import { NextLink } from "@mantine/next";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import type { FC, ReactNode } from "react";
 import { getPath } from "src/lib/const";
+import { Bell, Logout, Search, Settings } from "tabler-icons-react";
 
+/** @package */
 export const Header: FC<{ left: ReactNode }> = ({ left }) => {
   return (
     <Box
       component="header"
-      sx={(theme) => ({
-        padding: `${theme.spacing.xs}px ${theme.spacing.md}px`,
-        borderBottom: `1px solid ${theme.colors.gray[2]}`,
-        backgroundColor: theme.white,
-      })}
+      sx={(theme) => {
+        return {
+          padding: `${theme.spacing.xs}px ${theme.spacing.md}px`,
+          borderBottom: `1px solid ${theme.colors.gray[2]}`,
+          backgroundColor: theme.white,
+        };
+      }}
     >
       <Group spacing="lg" noWrap>
         {left}
@@ -47,7 +50,7 @@ const SearchForm: FC = () => {
         input: { border: 0, backgroundColor: "transparent" },
       }}
       onChange={(value) => {
-        console.log(value);
+        console.info(value);
       }}
     />
   );
@@ -85,10 +88,12 @@ const UserMenu: FC = () => {
           />
         </ActionIcon>
       }
-      styles={(theme) => ({
-        label: { fontSize: theme.fontSizes.sm },
-        itemLabel: { fontSize: theme.fontSizes.md },
-      })}
+      styles={(theme) => {
+        return {
+          label: { fontSize: theme.fontSizes.sm },
+          itemLabel: { fontSize: theme.fontSizes.md },
+        };
+      }}
     >
       <Menu.Label>Application</Menu.Label>
       <Menu.Item icon={<Settings size={16} />} component={NextLink} href="#">

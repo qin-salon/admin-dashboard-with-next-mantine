@@ -1,6 +1,7 @@
-import { Button, Global } from "@mantine/core";
+import { Global } from "@mantine/core";
 import type { FC, ReactNode } from "react";
 
+/** @package */
 export const GlobalStyleProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {

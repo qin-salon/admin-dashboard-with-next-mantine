@@ -1,44 +1,46 @@
-import type { CustomNextPage } from "next";
-import { AuthLayout } from "src/layout";
-import { getPath } from "src/lib/const";
 import {
-  createStyles,
-  Paper,
-  Title,
-  Text,
-  TextInput,
-  Group,
   Anchor,
-  Center,
   Box,
   Button,
+  Center,
+  createStyles,
+  Group,
+  Paper,
+  Text,
+  TextInput,
+  Title,
 } from "@mantine/core";
-import { ArrowLeft } from "tabler-icons-react";
+import type { CustomNextPage } from "next";
 import Link from "next/link";
+import { AuthLayout } from "src/layout";
+import { getPath } from "src/lib/const";
+import { ArrowLeft } from "tabler-icons-react";
 
-const useStyles = createStyles((theme) => ({
-  title: {
-    fontSize: 26,
-    fontWeight: 900,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-  },
-  controls: {
-    [theme.fn.smallerThan("xs")]: {
-      flexDirection: "column-reverse",
+const useStyles = createStyles((theme) => {
+  return {
+    title: {
+      fontSize: 26,
+      fontWeight: 900,
+      fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     },
-  },
-  control: {
-    [theme.fn.smallerThan("xs")]: {
-      width: "100%",
-      textAlign: "center",
+    controls: {
+      [theme.fn.smallerThan("xs")]: {
+        flexDirection: "column-reverse",
+      },
     },
-  },
-}));
+    control: {
+      [theme.fn.smallerThan("xs")]: {
+        width: "100%",
+        textAlign: "center",
+      },
+    },
+  };
+});
 
 const ForgotPassword: CustomNextPage = () => {
   const { classes } = useStyles();
   const handleClick = () => {
-    console.log("clicked");
+    alert("clicked");
   };
 
   return (

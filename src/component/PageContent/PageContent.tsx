@@ -1,5 +1,5 @@
-import { FC, ReactNode } from "react";
 import { Box, Paper, Title } from "@mantine/core";
+import type { FC, ReactNode } from "react";
 
 type PageContentProps = {
   children: ReactNode;
@@ -8,11 +8,12 @@ type PageContentProps = {
   outerTitle?: boolean;
 };
 
+/** @package */
 export const PageContent: FC<PageContentProps> = ({
   children,
-  title,
-  outerTitle,
   className,
+  outerTitle,
+  title,
 }) => {
   return (
     <Box className={className}>

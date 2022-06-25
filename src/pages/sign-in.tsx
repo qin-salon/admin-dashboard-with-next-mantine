@@ -1,19 +1,19 @@
+import {
+  Anchor,
+  Button,
+  Checkbox,
+  Group,
+  Paper,
+  PasswordInput,
+  Text,
+  TextInput,
+  Title,
+} from "@mantine/core";
 import type { CustomNextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { AuthLayout } from "src/layout";
 import { getPath } from "src/lib/const";
-import {
-  TextInput,
-  PasswordInput,
-  Checkbox,
-  Anchor,
-  Paper,
-  Title,
-  Text,
-  Group,
-  Button,
-} from "@mantine/core";
 
 const SignIn: CustomNextPage = () => {
   const router = useRouter();
@@ -25,10 +25,12 @@ const SignIn: CustomNextPage = () => {
     <>
       <Title
         align="center"
-        sx={(theme) => ({
-          fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-          fontWeight: 900,
-        })}
+        sx={(theme) => {
+          return {
+            fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+            fontWeight: 900,
+          };
+        }}
       >
         ログイン
       </Title>
