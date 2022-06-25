@@ -3,9 +3,15 @@ import type { CustomLayout } from "next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useDisclosure } from "@mantine/hooks";
-import { AppShell, Box, CloseButton, Drawer, MediaQuery } from "@mantine/core";
+import {
+  ActionIcon,
+  AppShell,
+  Box,
+  CloseButton,
+  Drawer,
+  MediaQuery,
+} from "@mantine/core";
 import { Menu2 } from "tabler-icons-react";
-import { ActionIcon } from "src/lib/mantine";
 
 import { LayoutErrorBoundary } from "../LayoutErrorBoundary";
 

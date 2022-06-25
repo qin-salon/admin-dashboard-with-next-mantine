@@ -2,7 +2,6 @@ import type { CustomNextPage } from "next";
 import Link from "next/link";
 import { AuthLayout } from "src/layout";
 import { getPath } from "src/lib/const";
-import { Button } from "src/lib/mantine";
 import {
   TextInput,
   PasswordInput,
@@ -11,6 +10,7 @@ import {
   Title,
   Text,
   Space,
+  Button,
 } from "@mantine/core";
 
 const SignUp: CustomNextPage = () => {

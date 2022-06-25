@@ -10,10 +10,10 @@ import {
   Indicator,
   Menu,
   Autocomplete,
+  ActionIcon,
 } from "@mantine/core";
 import { Logout, Bell, Search, Settings } from "tabler-icons-react";
 import { getPath } from "src/lib/const";
-import { ActionIcon } from "src/lib/mantine";
 
 export const Header: FC<{ left: ReactNode }> = ({ left }) => {
   return (

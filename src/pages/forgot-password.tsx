@@ -1,7 +1,6 @@
 import type { CustomNextPage } from "next";
 import { AuthLayout } from "src/layout";
 import { getPath } from "src/lib/const";
-import { Button } from "src/lib/mantine";
 import {
   createStyles,
   Paper,
@@ -12,6 +11,7 @@ import {
   Anchor,
   Center,
   Box,
+  Button,
 } from "@mantine/core";
 import { ArrowLeft } from "tabler-icons-react";
 import Link from "next/link";
