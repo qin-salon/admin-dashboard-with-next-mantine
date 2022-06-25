@@ -1,6 +1,6 @@
 import type { CustomNextPage } from "next";
-import { DashboardLayout } from "src/layout";
 import { Settings } from "src/pages-component/settings";
+import { DashboardLayout } from "src/pages-layout";
 
 const SettingsPage: CustomNextPage = (props) => {
   return <Settings {...props} />;

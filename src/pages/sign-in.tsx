@@ -1,6 +1,6 @@
 import type { CustomNextPage } from "next";
-import { AuthLayout } from "src/layout";
 import { SignIn } from "src/pages-component/sign-in";
+import { AuthLayout } from "src/pages-layout";
 
 const SignInPage: CustomNextPage = (props) => {
   return <SignIn {...props} />;
