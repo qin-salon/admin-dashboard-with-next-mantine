@@ -1,5 +1,5 @@
 import type { CustomNextPage } from "next";
-import { SignUp } from "src/pages-component/sign-up";
+import { SignUp } from "src/pages-component/auth/sign-up";
 import { AuthLayout } from "src/pages-layout";
 
 const SignUpPage: CustomNextPage = (props) => {
